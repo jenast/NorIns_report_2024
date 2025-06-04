@@ -380,7 +380,7 @@ Figur&nbsp;2: NMDS over variasjonen i landskapskomposisjon (blå tekst i figuren
 <img src="NorIns_report_2024_files/figure-html/fig-ar5nmds_all_years-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ar5nmds_all_years-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;3: Tilsvarende som <a href="#fig-ar5nmds" class="quarto-xref">Figur&nbsp;2</a>, men for alle lokaliteter i 2020-2024.
+Figur&nbsp;3: Tilsvarende som <a href="#fig-ar5nmds" class="quarto-xref">Figur&nbsp;2</a>, men for alle lokaliteter i 2020-2024. Skogslokaliteter er tegnet i grønt.
 </figcaption>
 </figure>
 </div>
@@ -2213,15 +2213,15 @@ Figur&nbsp;54: Gjennomsnitt av antall pollinatorer fanget per lokalitet og år i
 <p>Vi starter med å beskrive tidstrenden av insektbiomassen i de forskjellige regionene i en statistisk modell uten å forsøke kontrollere for noen lokale forklaringsvariabler, (<a href="#fig-biomass-year-hab" class="quarto-xref">Figur&nbsp;52</a>). Vi inkluderer region, habitattype og en felles årstrend for alle regioner, som fikserte faktorer. Analysen gjøres med funksjonen <code>lmer</code> i R-pakken <code>lme4</code>, hvilket innebærer at vi antar normalfordelte feil (på logskala). Med andre ord modellerer vi:</p>
 <p><span id="eq-year"><span class="math display">\[
 \begin{split}
-log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + år + \\
+log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + {\fontfamily{cmss}\textsl{å}}r + \\
 (1 \mid ukenummer)  + (1 \mid lokalitet)
 \end{split}
 \tag{1}\]</span></span></p>
 <p>Man kan også undersøke hvor ulike trendene er i de ulike regionene, selv om estimeringen av de regionale trendene vil være usikker med så korte tidsserier. Vi gjentar derfor øvelsen, men legger til en interaksjon mellom region og årstrend:</p>
 <p><span id="eq-year_reg"><span class="math display">\[
 \begin{split}
-log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + år + \\
-region:år + (1 \mid ukenummer) + (1 \mid lokalitet)
+log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + {\fontfamily{cmss}\textsl{å}}r + \\
+region:{\fontfamily{cmss}\textsl{å}}r + (1 \mid ukenummer) + (1 \mid lokalitet)
 \end{split}
 \tag{2}\]</span></span></p>
 <div id="tbl-year-mod" class="cell quarto-float anchored">
@@ -2423,7 +2423,7 @@ log(\frac{biomasse}{antall~felledager}) \sim habitattype + temperatur + luftfukt
 + variasjon\_temperatur + variasjon\_fukt + variasjon\_lys + \\
 temperatur:lys + luftfuktighet:lys + temperatur:luftfuktighet +\\
 variasjon\_temp:variasjon\_lys + variasjon\_fukt:variasjon\_lys + \\ variasjon\_temp:variasjon\_fukt\\
-habitat\_type + år + (1 \mid uke)  + (1 \mid lokalitet)
+habitat\_type + {\fontfamily{cmss}\textsl{å}}r + (1 \mid uke)  + (1 \mid lokalitet)
 \end{split}
 \tag{3}\]</span></span></p>
 <p>Modellen ble kjørt gjennom rutinen <code>lmer</code> i pakken <code>lme4</code> <span class="citation" data-cites="lme4">(<a href="#ref-lme4" role="doc-biblioref">Bates et al. 2015</a>)</span>, med estimering gjennom “maximum likelihood”. <a href="#fig-var-mod" class="quarto-xref">Figur&nbsp;56</a> og <a href="#tbl-var-mod" class="quarto-xref">Tabell&nbsp;8</a> viser parameterestimatene til modellen.</p>
