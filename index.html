@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 /* CSS for citations */
@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const bar = document.querySelector('#progress-bar');
     const post = document.querySelector('#quarto-content');
     const html = document.documentElement;
-    
+
     const height = post.scrollHeight + post.offsetTop;
-    
+
     window.addEventListener('scroll', () => {
         bar.style.width = (html.scrollTop / (height- html.clientHeight)) * 100 + '%';
     });
@@ -148,7 +148,7 @@ window.Quarto = {
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Innhold</h2>
-   
+
   <ul>
   <li><a href="#sec-inl" id="toc-sec-inl" class="nav-link active" data-scroll-target="#sec-inl"><span class="header-section-number">1</span> Innledning</a></li>
   <li><a href="#lokaliteter" id="toc-lokaliteter" class="nav-link" data-scroll-target="#lokaliteter"><span class="header-section-number">2</span> Lokaliteter</a>
@@ -285,14 +285,14 @@ In 2024, we investigated the results of crushing window trap catches before meta
 
 
 
-<!-- 
+<!--
 <div class="quarto-title-meta">
 
-    
-  
-    
+
+
+
   </div>
-  
+
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
@@ -2213,15 +2213,15 @@ Figur&nbsp;54: Gjennomsnitt av antall pollinatorer fanget per lokalitet og år i
 <p>Vi starter med å beskrive tidstrenden av insektbiomassen i de forskjellige regionene i en statistisk modell uten å forsøke kontrollere for noen lokale forklaringsvariabler, (<a href="#fig-biomass-year-hab" class="quarto-xref">Figur&nbsp;52</a>). Vi inkluderer region, habitattype og en felles årstrend for alle regioner, som fikserte faktorer. Analysen gjøres med funksjonen <code>lmer</code> i R-pakken <code>lme4</code>, hvilket innebærer at vi antar normalfordelte feil (på logskala). Med andre ord modellerer vi:</p>
 <p><span id="eq-year"><span class="math display">\[
 \begin{split}
-log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + {\fontfamily{cmss}\textsl{å}}r + \\
+log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + år + \\
 (1 \mid ukenummer)  + (1 \mid lokalitet)
 \end{split}
 \tag{1}\]</span></span></p>
 <p>Man kan også undersøke hvor ulike trendene er i de ulike regionene, selv om estimeringen av de regionale trendene vil være usikker med så korte tidsserier. Vi gjentar derfor øvelsen, men legger til en interaksjon mellom region og årstrend:</p>
 <p><span id="eq-year_reg"><span class="math display">\[
 \begin{split}
-log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + {\fontfamily{cmss}\textsl{å}}r + \\
-region:{\fontfamily{cmss}\textsl{å}}r + (1 \mid ukenummer) + (1 \mid lokalitet)
+log(\frac{biomasse}{antall~felledager}) \sim region + habitattype + år + \\
+region:år + (1 \mid ukenummer) + (1 \mid lokalitet)
 \end{split}
 \tag{2}\]</span></span></p>
 <div id="tbl-year-mod" class="cell quarto-float anchored">
@@ -2423,7 +2423,7 @@ log(\frac{biomasse}{antall~felledager}) \sim habitattype + temperatur + luftfukt
 + variasjon\_temperatur + variasjon\_fukt + variasjon\_lys + \\
 temperatur:lys + luftfuktighet:lys + temperatur:luftfuktighet +\\
 variasjon\_temp:variasjon\_lys + variasjon\_fukt:variasjon\_lys + \\ variasjon\_temp:variasjon\_fukt\\
-habitat\_type + {\fontfamily{cmss}\textsl{å}}r + (1 \mid uke)  + (1 \mid lokalitet)
+habitat\_type + år + (1 \mid uke)  + (1 \mid lokalitet)
 \end{split}
 \tag{3}\]</span></span></p>
 <p>Modellen ble kjørt gjennom rutinen <code>lmer</code> i pakken <code>lme4</code> <span class="citation" data-cites="lme4">(<a href="#ref-lme4" role="doc-biblioref">Bates et al. 2015</a>)</span>, med estimering gjennom “maximum likelihood”. <a href="#fig-var-mod" class="quarto-xref">Figur&nbsp;56</a> og <a href="#tbl-var-mod" class="quarto-xref">Tabell&nbsp;8</a> viser parameterestimatene til modellen.</p>
@@ -2787,229 +2787,7 @@ Figur&nbsp;58: Parameterestimat fra modell på insektbiomasse i skogslokaliteter
 </div>
 <p><a href="#tbl-forest-mod" class="quarto-xref">Tabell&nbsp;9</a> og <a href="#fig-forest-mod" class="quarto-xref">Figur&nbsp;58</a> viser parameterestimater fra modellen på insektbiomasse i skog. Som i tidligere år har flere forklaringsvariabler usikker betydning. De fleste variabler har lav estimert effekt og/eller mye usikkerhet. Bildet av hva som påvirker insektbiomassen i skog har forandret seg noe, da vi har fått flere år med data. Skog-alder er nå en mindre sikker indikasjon på insektmengdene. Skog-alder hadde særlig en sterk (negativ) påvirkning på insektbiomasse de 2 første årene, men denne effekten ser altså ikke ut til å lenger være gjeldende.</p>
 <p>Den variabel som har klarest sammenheng med insektbiomasse i skog er Skog-PCA-akse 2 (Impediment / ikke tresatt, se <a href="#sec-gisdata" class="quarto-xref">Kapittel&nbsp;4.5</a>). I tillegg ser det muligens ut til å være en forskjell mellom skoger av ulike treslag, der særlig furuskoger og hengebjørkskoger har høy insektbiomasse. Denne effekten er dog statistisk usikker.</p>
-<p>Vi så i <a href="#sec-var" class="quarto-xref">Kapittel&nbsp;4.3</a> at fellene i skog generelt fanger mindre insektbiomasse enn de i semi-naturlig mark. I modellen kun for skog, ser det ut som at biomassen øker med andelen av landskapet som ligner på åpen mark. I landskap med lite skog (mer jordbruksmark, lite tresatt), og (muligens) i skoger med treslag med mer åpen trekrone, ser vi høyere insektbiomasse. Dette kan også gjenspeile en høyere flyveaktivitet i åpnere omgivelser, med mindre tett skog, hvilket vil fanges opp av feller som fanger flygende insekter.</p>
-<p>Modellen på biomasse i skogslokalitetene hadde en R2-verdi på 48.5% (marginal R2, dvs. ikke gitt lokalitet-id). Etter å ha tatt høyde for de andre forklaringsvariablene, ser vi ingen klar tidstrend i dette økosystemet. Tidstrenden i råverdiene for skog er også svak i <a href="#fig-biomass-year-hab" class="quarto-xref">Figur&nbsp;52</a>.</p>
-</section>
-<section id="viktige-variabler-for-biomasse-i-semi-naturlig-mark" class="level3" data-number="6.4.5">
-<h3 data-number="6.4.5" class="anchored" data-anchor-id="viktige-variabler-for-biomasse-i-semi-naturlig-mark"><span class="header-section-number">6.4.5</span> Viktige variabler for biomasse i semi-naturlig mark</h3>
-<p>For semi-naturlig mark gjentok vi modelleringen på samme måte som for skog. Forskjellen er at vi her ikke har landskogstakseringsdata, og at ANO-dataene er mer usikre da de bare kommer fra én ANO-sirkel, mot 18 i skogslokalitetene. Vi har også data fra flere geografiske regioner, med varierende antall år per region.</p>
-<div id="tbl-seminat-mod" class="cell quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-seminat-mod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabell&nbsp;10: Parameterestimat fra modell over insektbiomasse i semi-naturlig mark. Værvariabler er ikke vist.
-</figcaption>
-<div aria-describedby="tbl-seminat-mod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 18%">
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 10%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Parameter</th>
-<th style="text-align: right;">Estimate.norm</th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">AR5-arealtype_PCA-akse_1</td>
-<td style="text-align: right;">0.959</td>
-<td style="text-align: right;">-0.042</td>
-<td style="text-align: right;">0.065</td>
-<td style="text-align: right;">-0.647</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">AR5-arealtype_PCA-akse_2</td>
-<td style="text-align: right;">0.876</td>
-<td style="text-align: right;">-0.132</td>
-<td style="text-align: right;">0.065</td>
-<td style="text-align: right;">-2.045</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">AR5-arealtype_Shannon_indeks</td>
-<td style="text-align: right;">0.868</td>
-<td style="text-align: right;">-0.141</td>
-<td style="text-align: right;">0.080</td>
-<td style="text-align: right;">-1.762</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">AR5-arealtype_lineære_elementer</td>
-<td style="text-align: right;">1.064</td>
-<td style="text-align: right;">0.062</td>
-<td style="text-align: right;">0.050</td>
-<td style="text-align: right;">1.236</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">AR5-skog_PCA-akse_1</td>
-<td style="text-align: right;">1.014</td>
-<td style="text-align: right;">0.013</td>
-<td style="text-align: right;">0.064</td>
-<td style="text-align: right;">0.209</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">AR5-skog_PCA-akse_2</td>
-<td style="text-align: right;">1.022</td>
-<td style="text-align: right;">0.022</td>
-<td style="text-align: right;">0.051</td>
-<td style="text-align: right;">0.434</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ANO_artsantall_karpl.</td>
-<td style="text-align: right;">1.042</td>
-<td style="text-align: right;">0.041</td>
-<td style="text-align: right;">0.040</td>
-<td style="text-align: right;">1.015</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ANO_dekningsgrad_karpl.</td>
-<td style="text-align: right;">0.980</td>
-<td style="text-align: right;">-0.020</td>
-<td style="text-align: right;">0.043</td>
-<td style="text-align: right;">-0.471</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Region_Sørlandet</td>
-<td style="text-align: right;">0.776</td>
-<td style="text-align: right;">-0.254</td>
-<td style="text-align: right;">0.115</td>
-<td style="text-align: right;">-2.210</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Region_Trøndelag</td>
-<td style="text-align: right;">1.209</td>
-<td style="text-align: right;">0.190</td>
-<td style="text-align: right;">0.103</td>
-<td style="text-align: right;">1.835</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Region_Nord-Norge</td>
-<td style="text-align: right;">0.939</td>
-<td style="text-align: right;">-0.063</td>
-<td style="text-align: right;">0.144</td>
-<td style="text-align: right;">-0.437</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Region_Vestlandet</td>
-<td style="text-align: right;">1.213</td>
-<td style="text-align: right;">0.193</td>
-<td style="text-align: right;">0.177</td>
-<td style="text-align: right;">1.094</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">År</td>
-<td style="text-align: right;">0.972</td>
-<td style="text-align: right;">-0.028</td>
-<td style="text-align: right;">0.038</td>
-<td style="text-align: right;">-0.755</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Temperatur:Lys</td>
-<td style="text-align: right;">1.066</td>
-<td style="text-align: right;">0.064</td>
-<td style="text-align: right;">0.021</td>
-<td style="text-align: right;">2.990</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-seminat-mod" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-seminat-mod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="NorIns_report_2024_files/figure-html/fig-seminat-mod-1.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seminat-mod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;59: Parameterestimat fra modell over insektbiomasse i semi-naturlig mark. Værvariabler er ikke vist.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#tbl-seminat-mod" class="quarto-xref">Tabell&nbsp;10</a> og <a href="#fig-seminat-mod" class="quarto-xref">Figur&nbsp;59</a> viser modellresultatene for insektbiomasse i semi-naturlig mark. For forklaring av PCA-aksene, se <a href="#sec-gisdata" class="quarto-xref">Kapittel&nbsp;4.5</a>. Som tidligere år er det flere variabler som fortsatt har en statistisk usikker effekt. Flere av disse forklaringsvariablene er også korrelert med hverandre, og det er ikke uproblematisk å tolke effektestimatene fra en slik modell økologisk.</p>
-<p>Selv i denne modellen, som inkluderer mange mulige forklaringsfaktorer, gjenstår det en negativ trend av biomassen over tid (variabelen År). I tillegg er det forskjell mellom de ulike landsdelene, der Trøndelag ligger klart høyere enn referansenivået Østlandet. Sørlandet har noe lavere biomasse enn Østlandet, og Nord-Norge noe høyere, men disse effektene er statistisk usikre.</p>
-<p>Modellen for biomasse i semi-naturlig mark hadde en R2-verdi på 34.8% (marginal R2, dvs ikke gitt lokalitet-id). Ved å inkludere disse forklaringsvariablene på landskapsnivå forklarer vi altså bare marginalt mer av variasjonen i biomasse enn vær-modellen, og mindre enn modellen for skog.</p>
-</section>
-</section>
-<section id="sec-mod-biodiv" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="sec-mod-biodiv"><span class="header-section-number">6.5</span> Forklaringer av artssamfunn</h2>
-<p>Insektsamfunnene vi måler er svært diverse, og det er sannsynlig at ulike arter eller funksjonelle grupper reagerer ulikt på ulike påvirkningsfaktorer. Her er mulighetene for analyser nærmest uendelige, og vi begrenser oss her til den mest grunnleggende øvelsen, å undersøke hvilke forklaringsvariabler som ser ut å påvirke insektsamfunnet sett under ett. Som i tidligere rapporter gjør vi en ordinasjonsanalyse (NMDS) ved hjelp av pakken <code>vegan</code> <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2020</a>)</span> på artssamfunnet. Vi deler opp analysen i to deler. Først ser vi på effekter av habitatstype og tømmetilfelle på Østlandet, den eneste regionen med 2 forskjellige habitatstyper. Etter det ser vi på regionale forskjeller hos semi-naturlig mark over hele landet.</p>
-<p>Hovedmønsteret på Østlandet i 2024 er det samme som vi fant i tidligere år: insektsamfunnet påvirkes kraftig av habitatstype og tidspunkten under sesongen (henholdsvis symboler og farger i <a href="#fig-beta-div-patterns-ost" class="quarto-xref">Figur&nbsp;60</a>). Vi ser at samfunnene i skog og semi-naturlig mark skiller seg godt fra hverandre (akse 2) og at det er en konsekvent trend i komposisjon i løpet av sesongen (akse 1). Forskjellene blant semi-naturlig mark på tvers av region er forholdsvis små og artsamfunnene mellom de ulike regionene overlapper kraftig (<a href="#fig-beta-div-patterns-semi" class="quarto-xref">Figur&nbsp;61</a>). Derimot ser man også her en tydelig forandring i artsamfunnene i løpet av sesongen (akse 1).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-beta-div-patterns-ost" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="!ht">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-beta-div-patterns-ost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="NorIns_report_2024_files/figure-html/fig-beta-div-patterns-ost-1.svg" class="img-fluid figure-img" data-fig-pos="!ht">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-div-patterns-ost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;60: Ordinasjon som viser hovedmønstrene i artssammensetning i insektprøvene innsamlet på Østlandet i 2024. Punktene er farget etter innsamlingsdato og ellipsene viser et 95% konfidens-intervall for hvert habitat.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-beta-div-patterns-semi" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="!ht">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-beta-div-patterns-semi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="NorIns_report_2024_files/figure-html/fig-beta-div-patterns-semi-1.svg" class="img-fluid figure-img" data-fig-pos="!ht">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-div-patterns-semi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;61: Ordinasjon som viser hovedmønstrene i artssammensetning i insektprøvene innsamlet på i semi-naturlig mark i 2024. Punktene er farget etter innsamlingsdato og ellipsene viser et 95% konfidens-intervall for hver region. Data fra Sørlandet og Vestlandet er ikke tatt med da rutinen ikke ville finne en løsning med disse inkludert.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Deretter ser vi på mulige forklaringsvariabler for mønster i artskomposisjon innen de to habitatene gjennom funksjonen <code>envfit</code>i R-pakken <code>vegan</code>. Vi summerer her artskomposisjonen og forklaringsverdier for hele sesongen for å unngå å fremst se på mønstre innenfor sesongen knyttet til vær. Vi inkluderer derfor middelverdier av temperatur, lys og luftfuktighet som ble målt for de enkelte felletømmingene, de 2 NMDS-aksene fra analysen av arealtyper fra AR5, samt 2 akser fra analysen av skogskarakterer, mengden lineære element, shannon diversitet av arealtyper, dekkingsgrad av karplanter fra ANO-kartleggingen, samt antallet arter karplanter fra ANO-kartleggingen.</p>
-<p>De ulike regionene skiller seg ut tydelig og det er slående hvordan denne ordinasjon som viser avstanden mellom insektsamfunn, ligner på et kart som viser geografiske avstand. Regionene legger seg også på en logisk rekkefølge i forhold til temperatur (akse 1) og ar5_PC2 som indikerer en større mengde åpen fastmark (akse 2) (<a href="#fig-betadiv-pattern-semi-nat" class="quarto-xref">Figur&nbsp;62</a>). Semi-naturlige lokaliteter på Østlandet og Sørlandet er knyttet til høyest temperatur, fulgt av Trøndelag og Nord-Norge. Østlandet er også knyttet til høyest dekning av karplanter, høyest artsantall karplanter og høyest lysverdier, men lavere verdier av landskapsheterogenitet, skogsbonitet og luftfuktighet.</p>
-<p><a href="#fig-betadiv-pattern-ost" class="quarto-xref">Figur&nbsp;63</a> viser tilsvarende figur for både semi-naturlig mark og skog på Østlandet. Vi ser her et tydelig skille mellom artssamfunnene i semi-naturlig mark og skog, der skog naturlig nok er forknippet med høyere andel skogsmark i landskapet og lavere temperaturer og mindre lys (ar5_PC1).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-betadiv-pattern-semi-nat" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="!hb">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-betadiv-pattern-semi-nat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="NorIns_report_2024_files/figure-html/fig-betadiv-pattern-semi-nat-1.svg" class="img-fluid figure-img" data-fig-pos="!hb">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-betadiv-pattern-semi-nat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;62: Ordinasjon som viser sammenheng mellom forklaringsvariabler og mønster i samfunnskomposisjon i semi-naturlig mark. Aksene har bytt posisjon og y aksen retning for å etterligne den geografiske plasseringen av regionene. Solide linjer viser signifikante sammenhenger med forklaringsvariabler. ‘rh’, ‘lys’, og ‘temp’ står henholdsvis for middelverdiene av luftfuktighet, lysintensitet og temperatur over hele fellesesongen. ‘ar5_PC1’ står for PCA-akse 1 i arealtyper der positive verdier er angir med større mengde skog. ‘ar5_PC2’ er på samme måte angir større mengde åpen fastmark og mindre mengde fulldyrka jord. ‘Skog_PC2’ står for PCA-akse 2 for skogstype der positive verdier angir høyere bonitet. ‘ano_cov’ angir høyere dekningsgrad av karplanter og ‘ano_spec’ et høyere artsantall karplanter fra ANO-kartleggingen. ‘perim’ står for mer lineære element i landskapet og ‘shannon’ angir landskapsheterogenitet (shannon indeks for arealtyper).
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-betadiv-pattern-ost" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="!hb">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-betadiv-pattern-ost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="NorIns_report_2024_files/figure-html/fig-betadiv-pattern-ost-1.svg" class="img-fluid figure-img" data-fig-pos="!hb">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-betadiv-pattern-ost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;63: Ordinasjon som viser sammenheng mellom forklaringsvariabler og mønster i samfunnskomposisjon på Østlandet. Solide linjer viser signifikante sammenhenger med forklaringsvariabler. ‘rh’, ‘lys’, og ‘temp’ står henholdsvis for luftfuktighet, lysintensitet og temperatur. ‘ar5_PC1’ (mengde skog), ‘ar5_PC2’ (mengde fulldyrka jord vs fastmark), ‘ano_spec’ (artsantall karplanter), ‘ano_cov’ (dekningsgrad karplanter) ligger tett på hverandre oppe til høyre. ‘skog_PC1’ (mengde barskog), ‘skog_PC2’ (bonitet), ‘shannon’ (shannon indeks for arealtyper) og ‘perim’ (lengde lineære element) ligger tett på hverandre nede til venstre.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="sec-ostland" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sec-ostland"><span class="header-section-number">6.6</span> Fordeling av insektsamfunn på Østlandet</h2>
-<!-- ```{r} -->
-<!-- #| label: pred_no_spec_gam -->
-<!-- #| eval: !expr recalc -->
-<!-- ### predict antall arter ### -->
-<!-- pred_r1 <- predict(single_raster, gg1) -->
+<p>Vi så i <a href="#sec-var" class="quarto-xref">Kapittel&nbsp;4.3</a> at fellene i skog generelt fanger mindre insektbiomasse enn de i semi\er, gg1) -->
 <!-- # crop on ostlandet -->
 <!-- pred_r1 <- terra::crop(pred_r1, ext(map3_)) -->
 <!-- pred_r1 <- mask(pred_r1, map3_) -->
@@ -4264,7 +4042,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       toggleBodyColorMode(bsSheetEl);
     }
   }
-  toggleBodyColorPrimary();  
+  toggleBodyColorPrimary();
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -4274,7 +4052,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
+      if (clz.startsWith('code-annotation-')) {
         return true;
       }
     }
@@ -4305,11 +4083,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
       button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
+      tooltip = new bootstrap.Tooltip(button,
+        { trigger: "manual",
           customClass: "code-copy-button-tooltip",
           offset: [0, -8]});
-      tooltip.show();    
+      tooltip.show();
     }
     setTimeout(function() {
       if (tooltip) {
@@ -4365,7 +4143,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     if (onUntriggerFn) {
       config.onUntrigger = onUntriggerFn;
     }
-    window.tippy(el, config); 
+    window.tippy(el, config);
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
@@ -4441,7 +4219,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     tippyHover(xref, undefined, function(instance) {
       instance.disable();
       let url = xref.getAttribute('href');
-      let hash = undefined; 
+      let hash = undefined;
       if (url.startsWith('#')) {
         hash = url;
       } else {
@@ -4469,7 +4247,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             if (note !== null) {
               const html = processXRef(id, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -4493,7 +4271,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             const html = processXRef(null, note);
             instance.setContent(html);
-          } 
+          }
         }).finally(() => {
           instance.enable();
           instance.show();
@@ -4533,7 +4311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             height = bottom - top;
           }
           if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
+            // cook up a div (if necessary) and position it
             let div = window.document.getElementById("code-annotation-line-highlight");
             if (div === null) {
               div = window.document.createElement("div");
